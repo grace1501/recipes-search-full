@@ -14,7 +14,11 @@ get("/recipes") do
   response_json = JSON.parse(raw_response)
   @recipes_list = response_json.fetch("meals")
 
-  erb(:recipes)
+  if @recipes_list.nil?
+    erb(:no_match)
+  else
+    erb(:recipes)
+  end
 end
 
 get("/random") do
