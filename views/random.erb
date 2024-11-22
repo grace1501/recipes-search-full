@@ -1,1 +1,12 @@
-<h1>There is error with your input, so here is a random recipe:</h1>
+<h3>There is some error with your input, so here is a random recipe:</h3>
+
+<div class="mb-3">
+  <h1><%= @meal_name %></h1>
+
+  <img src="<%= @meal_photo %>" class="img-fluid" alt="<%= @meal_name %> image">
+
+  <dl>
+    <dt>Instruction</dt>
+    <dd><%= @meal_instructions %></dd>
+  </dl>
+</div>
