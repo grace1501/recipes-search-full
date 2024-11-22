@@ -8,7 +8,7 @@ get("/") do
 end
 
 get("/recipes") do
-  search_term = params/.fetch("user_input")
+  search_term = params.fetch("user_input")
   api_url = "https://www.themealdb.com/api/json/v1/1/search.php?s=#{search_term}"
   raw_response = HTTP.get(api_url).to_s
   response_json = JSON.parse(raw_response)

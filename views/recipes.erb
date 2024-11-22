@@ -1,3 +1,22 @@
 <h1>Ideas for your dinner:</h1>
+<a href="/">Back to home</a>
 
-<%= @response_json %>
+<div>
+  <% @recipes_list.each do |item| %>
+  <% meal_name = item.fetch("strMeal") %>
+  <% meal_instructions = item.fetch("strInstructions") %>
+  <% meal_photo = item.fetch("strMealThumb") %>
+  
+  <div class="mb-3">
+  <h2><%= meal_name %></h2>
+
+  <img src="<%= meal_photo %>" class="img-fluid" alt="<%= meal_name %> image">
+
+  <dl>
+    <dt>Instruction</dt>
+    <dd><%= meal_instructions %></dd>
+  </dl>
+  </div>
+
+  <% end %>
+</div>
