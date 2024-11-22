@@ -1,11 +1,19 @@
 <h1>What's for dinner?</h1>
+
+<div class="mb-3">
 <form action="/recipes">
   <div>
     <label for="user_input">What are you craving?</label>
   </div>
   <div>
-    <input type="text" name="user_input" id="user_input placeholder="Name an ingredient, cuisine, or anything">
+    <input class="form-control" type="text" name="user_input" id="user_input" placeholder="Name an ingredient, cuisine, or anything">
   </div>
-  <button>Find the recipe</button>
-  
+  <button type="button" class="btn btn-primary">Find the recipe</button>
 </form>
+</div>
+
+<div>
+<form action="/random">
+  <button type="button" class="btn btn-warning">Anything is fine</button>
+</form>
+</div>
