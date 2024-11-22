@@ -1,18 +1,11 @@
-# sinatra-template
+# What's for dinner? 
+Recipes search with user input and 3rd party API
 
-Use this repository to create new Sinatra apps. 
+#### API: The Meal DB
+<https://www.themealdb.com/>
 
-Optionally, to use `ActiveRecord` for database operations, add to the `app.rb`:
+#### Description:
+Website user can search for meal recipes related to an ingredient or cuisine using the search box. If there is at least one recipe result with the search term, the recipe(s) will be displayed with title, image and cooking instruction. If there is no result, an error page will be displayed.
+Alternatively, the user can get a random idea for dinner recipe using the "Anything is fine" button.
 
-```ruby
-require "sinatra/activerecord"
-```
 
-And in the `config/environment.rb` file add this code block:
-
-```ruby
-configure do
-  # setup a database connection
-  set(:database, { adapter: "sqlite3", database: "db/development.sqlite3" })
-end
-```
