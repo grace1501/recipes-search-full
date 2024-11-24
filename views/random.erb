@@ -2,12 +2,12 @@
 <a href="/">Back to home</a>
 
 <div class="mb-3">
-  <h2><%= @meal_name %></h2>
+  <h2><%= @meal_object[:meal_name] %></h2>
 
-  <img src="<%= @meal_photo %>" class="img-fluid" alt="<%= @meal_name %> image">
+  <img src="<%= @meal_object[:meal_photo] %>" class="img-fluid" alt="<%= @meal_object[:meal_name] %> image">
 
   <dl>
     <dt>Instruction</dt>
-    <dd><%= @meal_instructions %></dd>
+    <dd><%= @meal_object[:meal_instructions] %></dd>
   </dl>
 </div>
