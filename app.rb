@@ -39,8 +39,10 @@ def process_meal(meal_data)
   return meal_obj
 end 
 
+
+# All routes start here
+
 get("/") do
-  
   erb(:homepage)
 end
 
