@@ -51,11 +51,15 @@ get("/recipes") do
   api_url = "https://www.themealdb.com/api/json/v1/1/search.php?s=#{search_term}"
   raw_response = HTTP.get(api_url).to_s
   response_json = JSON.parse(raw_response)
-  @recipes_list = response_json.fetch("meals")
+  recipes_list = response_json.fetch("meals")
 
-  if @recipes_list.nil?
+  if recipes_list.nil?
     erb(:no_match)
   else
+     # process all recipes in the list
+     @clean_recipes_list = recipes_list.each { |element|
+      process_meal(element)
+    }
     erb(:recipes)
   end
 end
