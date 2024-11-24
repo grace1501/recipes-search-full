@@ -2,6 +2,18 @@ require "sinatra"
 require "sinatra/reloader"
 require "http"
 
+# Helper function to process the meal data
+
+def processMeal(meal_data)
+  meal_obj = {}
+  meal_obj.meal_name = meal_data.fetch("strMeal")
+  meal_obj.meal_instructions = meal_data.fetch("strInstructions")
+  meal_obj.meal_photo = meal_data.fetch("strMealThumb")
+
+
+  return meal_obj
+end 
+
 get("/") do
   
   erb(:homepage)
@@ -28,9 +40,7 @@ get("/random") do
   response_json = JSON.parse(response_string)
 
   @result = response_json.fetch("meals")[0]
-  @meal_name = @result.fetch("strMeal")
-  @meal_instructions = @result.fetch("strInstructions")
-  @meal_photo = @result.fetch("strMealThumb")
+  @meal_object = processMeal
   
   erb(:random)
 end
