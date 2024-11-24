@@ -9,6 +9,10 @@ def process_meal(meal_data)
   meal_obj[:meal_name] = meal_data.fetch("strMeal")
   meal_obj[:meal_instructions] = meal_data.fetch("strInstructions")
   meal_obj[:meal_photo] = meal_data.fetch("strMealThumb")
+  
+  # process all the ingredients and measurements
+  ingredients = {}
+  
 
 
   return meal_obj
