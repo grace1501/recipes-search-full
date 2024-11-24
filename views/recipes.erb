@@ -2,7 +2,7 @@
 <a href="/">Back to home</a>
 
 <div>
-  <% @clean_recipes_list.each do |item| %>
+  <% @recipes_list.each do |item| %>
   <%= erb :_recipe_partial, :locals => {:meal_object => item} %>
   <% end %>
 </div>
