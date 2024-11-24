@@ -4,7 +4,7 @@ require "http"
 
 # Helper function to process the meal data
 
-def processMeal(meal_data)
+def process_meal(meal_data)
   meal_obj = {}
   meal_obj.meal_name = meal_data.fetch("strMeal")
   meal_obj.meal_instructions = meal_data.fetch("strInstructions")
