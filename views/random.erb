@@ -1,20 +1,4 @@
 <h3>Here is a random recipe:</h3>
 <a href="/">Back to home</a>
 
-<div class="mb-3">
-  <h2><%= @meal_object[:meal_name] %></h2>
-
-  <img src="<%= @meal_object.fetch(:meal_photo) %>" class="img-fluid" alt="<%= @meal_object[:meal_name] %> image">
-  <dl>
-    <dt>Ingredients</dt>    
-    <dd>
-      <ul>
-      <% @meal_object[:ingredients_with_measurements].each {|key,value| %>
-      <li><%= key %>: <%= value %></li>
-      <% } %>
-       </ul>
-    </dd>
-    <dt>Instruction</dt>
-    <dd><%= @meal_object[:meal_instructions] %></dd>
-  </dl>
-</div>
+<%= erb :_recipe_partial, :locals => {:meal_object => @meal_object} %>
