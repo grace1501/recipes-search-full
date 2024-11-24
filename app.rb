@@ -6,9 +6,9 @@ require "http"
 
 def process_meal(meal_data)
   meal_obj = {}
-  meal_obj.meal_name = meal_data.fetch("strMeal")
-  meal_obj.meal_instructions = meal_data.fetch("strInstructions")
-  meal_obj.meal_photo = meal_data.fetch("strMealThumb")
+  meal_obj[:meal_name] = meal_data.fetch("strMeal")
+  meal_obj[:meal_instructions] = meal_data.fetch("strInstructions")
+  meal_obj[:meal_photo] = meal_data.fetch("strMealThumb")
 
 
   return meal_obj
@@ -40,7 +40,7 @@ get("/random") do
   response_json = JSON.parse(response_string)
 
   @result = response_json.fetch("meals")[0]
-  @meal_object = processMeal
+  @meal_object = process_meal(@result)
   
   erb(:random)
 end
