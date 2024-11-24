@@ -4,6 +4,14 @@ require "http"
 
 # Helper function to process the meal data
 
+# Example of ingredients and measurements from the API:
+# "strIngredient1": "Chicken",
+# "strIngredient2": "Onion",
+# "strIngredient3": "Tomatoes",
+# "strMeasure1": "1.2 kg",
+# "strMeasure2": "5 thinly sliced",
+# "strMeasure3": "2 finely chopped",
+
 def process_meal(meal_data)
   meal_obj = {}
   meal_obj[:meal_name] = meal_data.fetch("strMeal")
@@ -11,10 +19,21 @@ def process_meal(meal_data)
   meal_obj[:meal_photo] = meal_data.fetch("strMealThumb")
   
   # process all the ingredients and measurements
-  ingredients = {}
-  
+  # select all the valid ingredients elements
+  # pair the ingredients with the corresponding measuremens
+  ingredients_with_measurements = {}
 
-
+  meal_data.select {|key, value|
+    if key.to_s.start_with?("strIngredient") {
+      # get the number
+      ingredient_num = key.to_s.gsub("strIngredient", "")
+      # find the measurement with the corresponding number
+      measurement_key = "strMeasure#{ingredient_num}".to_sym
+      measurement_value = meal_data.fetch(measurement_key, nil)
+      ingredients_with_measurements.store(value, measurement_value)
+    }
+  }
+  meal_obj.store(:ingredients_with_measurements, ingredients_with_measurements)
   return meal_obj
 end 
 
