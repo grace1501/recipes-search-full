@@ -4,7 +4,11 @@
 <div>
   <% @recipes_list.each do |item| %>
   <details>
-    <summary><%= item.fetch(:meal_name) %></summary>
+    <summary>
+    <img src="<%= item.fetch(:meal_photo) %>" height="75rem">
+    <%= item.fetch(:meal_name) %>
+    </summary>
+    
     <%= erb :_recipe_partial, :locals => {:meal_object => item} %>
   </details>
   
